@@ -26,7 +26,10 @@ import (
  */
 
 func PrepareGrpcServer() (*grpc.Server, net.Listener) {
-	lis, err := net.Listen("tcp", ":"+viper.GetString("server.port"))
+	host := viper.GetString("server.host")
+	port := viper.GetString("server.port")
+
+	lis, err := net.Listen("tcp", host+":"+port)
 	if err != nil {
 		log.Fatalf("failed to listen: %v", err)
 	}
