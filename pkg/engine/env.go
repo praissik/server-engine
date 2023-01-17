@@ -9,7 +9,7 @@ import (
 
 func InitEnv() {
 	if err := godotenv.Load(); err != nil {
-		log.Fatal("No .engine file found")
+		log.Fatal("No .env file found")
 	}
 }
 
