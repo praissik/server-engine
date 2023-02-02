@@ -2,7 +2,7 @@ package engine
 
 import (
 	"github.com/gin-gonic/gin"
-	"github.com/praissik/web-app-engine/pkg/initializer"
+	"github.com/praissik/web-app-engine/engine/initializer"
 	"github.com/spf13/viper"
 	"log"
 )
