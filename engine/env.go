@@ -14,15 +14,20 @@ func InitEnv() {
 }
 
 func InitViper() {
-	if os.Getenv("LAUNCH_MODE") == "prod" {
+	switch os.Getenv("LAUNCH_MODE") {
+	case "prod":
 		viper.SetConfigName("config.prod")
-	} else if os.Getenv("LAUNCH_MODE") == "local" {
+		viper.AddConfigPath("./config/")
+	case "local":
 		viper.SetConfigName("config.local")
-	} else {
+		viper.AddConfigPath("./config/")
+	case "test":
+		viper.SetConfigName("config.test")
+		viper.AddConfigPath("../config/")
+	default:
 		log.Fatal("LAUNCH_MODE not declared correctly")
 	}
 
-	viper.AddConfigPath("./config/")
 	err := viper.ReadInConfig()
 	if err != nil {
 		log.Fatal(err)
